@@ -1,0 +1,12 @@
+Sestavení generátoru
+
+- soubory "cycle_remove.py" a "kocourkov.py" slouží jako generátor vstupu pro glpsol
+- pro vytvoření stačí zavolat python *.py, program se následně zeptá na soubor se vstupem, 
+na základě kterého poté vytvoří out.txt obsahující vstup pro glpsol
+
+- soubory "cycle_direct_solve.py" a "kocourkov_direct_solve.py" přímo řeší lineární program za pomocí kníhovny pulp
+- fungují stejně jako předešlé soubory, tedy očekávají na vstupu jméno souboru, výsledek poté vypíšou na standartní výstup
+
+Popis vygenerovaného programu
+
+- program začíná definováním proměnných, následuje cílová funkce a definice omezení
