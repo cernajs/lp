@@ -39,12 +39,11 @@ def generate_lp_model(num_vertices, edges):
             model.append(f"s.t. use_{i}_{k}: x[{i},{k}] <= y[{k}];")
 
     # ve stejné straně pouze pokud je hrana
-    connected = set(edges)
-    for i in range(num_vertices):
-        for j in range(i + 1, num_vertices):
-            if (i, j) not in connected and (j, i) not in connected:
-                for k in range(num_vertices):
-                    model.append(f"s.t. no_edge_{i}_{j}_{k}: x[{i},{k}] + x[{j},{k}] <= 1;")
+    for v1 in range(num_vertices):
+        for v2 in range(v1 + 1, num_vertices):
+            if (v1, v2) not in edges and (v2, v1) not in edges:
+                for i in range(num_vertices):
+                    model.append(f"s.t. no_edge_{v1}_{v2}_{i}: x[{v1},{i}] + x[{v2},{i}] <= 1;")
 
     return "\n".join(model)
 
